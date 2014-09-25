@@ -4,9 +4,10 @@
 <head>
     <title>Seed Guardian</title>
     <script type="text/javascript" src="lib/js/angular.js"></script>
-    <script type="text/javascript" src="lib/js/secrets.js"></script>    
-    <script type="text/javascript" src="lib/js/mnemonic.js"></script> 
-    <script type="text/javascript" src="humanizer.js"></script> 
+    <script type="text/javascript" src="lib/js/secrets.js"></script>
+    <script type="text/javascript" src="lib/js/bip39.js"></script>
+    <script type="text/javascript" src="humanizer.js"></script>
+
 
     <script type="text/javascript" src="seedguardian.js"></script> 
     <link href="lib/css/bootstrap.css" rel="stylesheet" media="screen">
@@ -22,24 +23,24 @@
     </nav>
 
     <div class="container" id="main">
-        <h1>Electrum Seed Guardian <small>Never lose your bitcoins</small></h1>
-        <p>This software uses Shamir's Secret Sharing Scheme to securely store your electrum seed. Hexadecimal shares are humanized using electrum algorithm, so each share is encoded as a sequence of 15 words.</p>
+        <h1>BIP39 Seed Guardian <small>Never lose your bitcoins</small></h1>
+        <p>This software uses Shamir's Secret Sharing Scheme to securely store your BIP39 seed. Hexadecimal shares are humanized using BIP39 algorithm, so each share is encoded as a sequence of 15 words.</p>
 
         <div class="alert alert-warning">This software has just started development, please use with care.</div>
             <div class="panel panel-default" ng-controller="SplitCtrl">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Split Electrum Seed</h3>
+                    <h3 class="panel-title">Split BIP39 Seed</h3>
                 </div>
                 <div class="panel-body">
 
                     <form name="splitform" class="form-horizontal" method="get" onSubmit="return false;">
                         <fieldset>
                             <div class="form-group" ng-class="{'has-error': splitform.seed.$error.pattern}">
-                                <label class="col-lg-2 control-label">Electrum Seed</label>
+                                <label class="col-lg-2 control-label">BIP39 Seed</label>
                                 <div class="col-lg-10">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <input type="text" name="seed" ng-pattern="/^(\S*\s){11}\S*$/" ng-model="humanSeed" class="form-control" placeholder="Leave empty to create a new Electrum wallet">
+                                            <input type="text" name="seed" ng-pattern="/^(\S*\s){11}\S*$/" ng-model="humanSeed" class="form-control" placeholder="Leave empty to create a new BIP39 wallet">
                                             <span ng-show="splitform.seed.$error.pattern">Seed is made of exactly 12 words.</span>
                                          </div>
                                     </div>
@@ -79,6 +80,7 @@
                                 </div>
                             </div>
                             <div class="alert alert-danger" ng-show="showError">{{errorMessage}}</div>
+
                             <div class="form-group" ng-show="showShares" title="">
                                 <label class="col-lg-2 control-label">Shares</label>
                                 <div class="col-lg-10">
@@ -96,7 +98,7 @@
 
             <div class="panel panel-default" ng-controller="ReconstructCtrl">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Reconstruct Electrum Seed</h3>
+                    <h3 class="panel-title">Reconstruct BIP39 Seed</h3>
                 </div>
                 <div class="panel-body">
 
@@ -129,7 +131,7 @@
                             </div>
                             <div class="alert alert-danger" ng-show="showError">{{errorMessage}}</div>
                             <div class="form-group" ng-show="showSeed" title="">
-                                <label class="col-lg-2 control-label">Electrum Seed</label>
+                                <label class="col-lg-2 control-label">BIP39 Seed</label>
                                 <div class="col-lg-10">
                                     <div class="row">
                                         <div class="col-lg-12">
@@ -144,7 +146,7 @@
             </div> <!-- panel -->
 
         <footer>
-            <p>The contents of this page are released under the <a href="http://opensource.org/licenses/mit-license.php">MIT License</a>.<br>Donations are gratefully accepted at <a href="bitcoin:15zvrQeY3jPmqQGUPYZBRVfmfBy5Deo7FA">15zvrQeY3jPmqQGUPYZBRVfmfBy5Deo7FA</a>
+            <p>The contents of this page are released under the <a href="http://opensource.org/licenses/mit-license.php">MIT License</a>.
                 <span class="pull-right">Powered by <a href="http://pages.github.com">GitHub Pages</a> &nbsp;
                      <a href="https://github.com/seedguardian/seedguardian.github.io">GitHub Repository</a> &nbsp; 
                 </span>

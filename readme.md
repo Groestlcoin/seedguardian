@@ -8,7 +8,8 @@ See it in action at http://github.com/SeedGuardian
 - [Libraries](#Libraries)
 
 ##what-is-it
-This software shares your electrum 12 words seed in 15 words shares. If you share your seed in 3 shares with a threshold of 2, you need 2 shares to reconstruct your seed, so you could lose one share, and somebody finding one share can't reconstruct your seed.
+This software shares your BIP39 12 words seed in 15 words shares. If you share your seed in 3 shares with a threshold
+ of 2, you need 2 shares to reconstruct your seed, so you could lose one share, and somebody finding one share can't reconstruct your seed.
 
 ##Backlog
  1. Generation of some bitcoin addresses from the seed
@@ -21,4 +22,4 @@ This software is built using following libraries
  - angular.js
  - bootstrap.css
  - secrets.js
- - mnemonic.js
+ - bip39.js

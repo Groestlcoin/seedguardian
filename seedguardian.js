@@ -1,5 +1,6 @@
 // seedguardian.js - by Mathieu Gorichon - released under MIT License
 
+
 var SplitCtrl = function ($scope) {
     $scope.split = function() {
         $scope.showError = false;
@@ -7,9 +8,9 @@ var SplitCtrl = function ($scope) {
         // Generate a new seed if empty
         if ($scope.humanSeed === '') {
             $scope.seed = secrets.random(128);
-            $scope.humanSeed = mn_encode($scope.seed); 
+            $scope.humanSeed = BIP39.entropyToMnemonic($scope.seed);
         } else {
-            $scope.seed = mn_decode($scope.humanSeed);
+            $scope.seed = BIP39.mnemonicToEntropy($scope.humanSeed);
         }
         
         try {

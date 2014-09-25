@@ -66,11 +66,11 @@ var humanizer = (function () {
         for (var i = 0; i < shares.length; i += 1) {
             shares[i] = getPrefix(sharesCount, threshold) + shares[i]
         }
-        
+
         // Make Human readable shares
         var sharesHuman = [];
         for (var i = 0; i < shares.length; i += 1) {
-            sharesHuman[i] = mn_encode(shares[i]);
+            sharesHuman[i] = BIP39.entropyToMnemonic(shares[i]);
             console.log('Human share ' + i + ': ' + sharesHuman[i]);
         }
 
@@ -81,7 +81,7 @@ var humanizer = (function () {
         // Convert back human readable shares
         var sharesHex = [];
         for (var i = 0; i < shares.length; i += 1) {
-            sharesHex[i] = mn_decode(shares[i]);
+            sharesHex[i] = BIP39.mnemonicToEntropy(shares[i]);
         }
         console.log('Shares: ' + sharesHex);
 
@@ -95,18 +95,18 @@ var humanizer = (function () {
         console.log('Hex seed: ' + newSeedHex);
 
         // Convert back to human readable seed
-        return mn_encode(newSeedHex);
+        return BIP39.entropyToMnemonic(newSeedHex);
     };
 
     module.getSharesCount = function(share) {
-        var hex = mn_decode(share);
+        var hex = BIP39.mnemonicToEntropy(share);
         var prefix = hex.substring(0,3);
         var bin = hex2bin(prefix).substring(0,6)
         return bin2dec(bin);
     }
 
     module.getSharesThreshold = function(share) {
-        var hex = mn_decode(share);
+        var hex = BIP39.mnemonicToEntropy(share);
         var prefix = hex.substring(0,3);
         var bin = hex2bin(prefix).substring(6,12);
         return bin2dec(bin);
