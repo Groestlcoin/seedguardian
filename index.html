@@ -12,6 +12,7 @@
     <script type="text/javascript" src="seedguardian.js"></script> 
     <link href="lib/css/bootstrap.css" rel="stylesheet" media="screen">
     <link href="seedguardian.css" rel="stylesheet" media="screen">
+    <link href="seedguardian-print.css" rel="stylesheet" media="print">
 </head>
 
 <body ng-app>
@@ -24,7 +25,8 @@
 
     <div class="container" id="main">
         <h1>BIP39 Seed Guardian <small>Never lose your bitcoins</small></h1>
-        <p>This software uses Shamir's Secret Sharing Scheme to securely store your BIP39 seed. Hexadecimal shares are humanized using BIP39 algorithm, so each share is encoded as a sequence of 15 words.</p>
+        <p class="app">This software uses Shamir's Secret Sharing Scheme to securely store your BIP39 seed. Hexadecimal
+            shares are humanized using BIP39 algorithm, so each share is encoded as a sequence of 15 words.</p>
 
         <div class="alert alert-warning">This software has just started development, please use with care.</div>
             <div class="panel panel-default" ng-controller="SplitCtrl">
@@ -35,6 +37,7 @@
 
                     <form name="splitform" class="form-horizontal" method="get" onSubmit="return false;">
                         <fieldset>
+                            <div class="app">
                             <div class="form-group" ng-class="{'has-error': splitform.seed.$error.pattern}">
                                 <label class="col-lg-2 control-label">BIP39 Seed</label>
                                 <div class="col-lg-10">
@@ -80,13 +83,20 @@
                                 </div>
                             </div>
                             <div class="alert alert-danger" ng-show="showError">{{errorMessage}}</div>
-
+                            </div>
                             <div class="form-group" ng-show="showShares" title="">
                                 <label class="col-lg-2 control-label">Shares</label>
                                 <div class="col-lg-10">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <div class="well well-sm" ng-repeat="share in humanShares" ng-animate="'animate'">{{share}}</div>
+                                            <div class="well well-sm seed" ng-repeat="share in humanShares"
+                                                 ng-animate="'animate'">
+                                                <div>{{share}}</div>
+                                                <div class="seed-text">Visit
+                                                    https://github.com/jasadams/seedguardian.github.io to reconstruct
+                                                    the seed.</div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -97,6 +107,7 @@
             </div> <!-- panel -->
 
             <div class="panel panel-default" ng-controller="ReconstructCtrl">
+                <div class="app">
                 <div class="panel-heading">
                     <h3 class="panel-title">Reconstruct BIP39 Seed</h3>
                 </div>
@@ -142,6 +153,7 @@
                             </div>
                         </fieldset>
                     </form>
+                </div>
                 </div>
             </div> <!-- panel -->
 
